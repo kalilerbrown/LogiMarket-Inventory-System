@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogiMarket - Sistema de Control de Inventario</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header / Navegación -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>🏢 LogiMarket S.A.</h1>
+                <p class="tagline">Sistema de Control de Mercancía</p>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn active" data-module="inicio">🏠 Inicio</button>
+                <button class="nav-btn" data-module="productos">📦 Productos</button>
+                <button class="nav-btn" data-module="entradas">📥 Entradas</button>
+                <button class="nav-btn" data-module="salidas">📤 Salidas</button>
+                <button class="nav-btn" data-module="ajustes">⚙️ Ajustes</button>
+                <button class="nav-btn" data-module="reportes">📊 Reportes</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Módulo de Inicio (Vista por defecto) -->
+            <section id="inicio" class="module active">
+                <div class="welcome-section">
+                    <h2>Bienvenido al Sistema de Gestión de Inventario</h2>
+                    <p>Distribuciones LogiMarket S.A. - Control eficiente de mercancías</p>
+                    
+                    <div class="dashboard-cards">
+                        <div class="card">
+                            <div class="card-icon">📦</div>
+                            <h3>Productos</h3>
+                            <p>Gestión completa del catálogo de productos</p>
+                            <button class="btn-primary" onclick="navigateTo('productos')">Acceder</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">📥</div>
+                            <h3>Entradas</h3>
+                            <p>Registro de compras y recepciones</p>
+                            <button class="btn-primary" onclick="navigateTo('entradas')">Acceder</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">📤</div>
+                            <h3>Salidas</h3>
+                            <p>Control de despachos y ventas</p>
+                            <button class="btn-primary" onclick="navigateTo('salidas')">Acceder</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">⚙️</div>
+                            <h3>Ajustes</h3>
+                            <p>Correcciones de inventario</p>
+                            <button class="btn-primary" onclick="navigateTo('ajustes')">Acceder</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">📊</div>
+                            <h3>Reportes</h3>
+                            <p>Análisis y estadísticas</p>
+                            <button class="btn-primary" onclick="navigateTo('reportes')">Acceder</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo de Productos -->
+            <section id="productos" class="module">
+                <h2>Gestión de Productos</h2>
+                <div class="module-content">
+                    <p>Módulo en desarrollo por Integrante 1...</p>
+                </div>
+            </section>
+
+            <!-- Módulo de Entradas -->
+            <section id="entradas" class="module">
+                <h2>Entradas de Mercancía</h2>
+                <div class="module-content">
+                    <p>Módulo en desarrollo por Integrante 2...</p>
+                </div>
+            </section>
+
+            <!-- Módulo de Salidas -->
+            <section id="salidas" class="module">
+                <h2>Salidas / Despachos</h2>
+                <div class="module-content">
+                    <p>Módulo en desarrollo por Integrante 3...</p>
+                </div>
+            </section>
+
+            <!-- Módulo de Ajustes -->
+            <section id="ajustes" class="module">
+                <h2>Ajustes de Inventario</h2>
+                <div class="module-content">
+                    <p>Módulo en desarrollo por Integrante 4...</p>
+                </div>
+            </section>
+
+            <!-- Módulo de Reportes -->
+            <section id="reportes" class="module">
+                <h2>Reportes y Análisis</h2>
+                <div class="module-content">
+                    <p>Módulo en desarrollo por Integrante 4...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 LogiMarket S.A. - Sistema de Control de Inventario</p>
+            <p>Universidad Tecnológica de Panamá | Desarrollo de Software V</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/db.js"></script>
+    <script>
+        // Función para navegar entre módulos
+        function navigateTo(module) {
+            // Ocultar todos los módulos
+            document.querySelectorAll('.module').forEach(mod => {
+                mod.classList.remove('active');
+            });
+            
+            // Remover clase active de todos los botones
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Mostrar el módulo seleccionado
+            document.getElementById(module).classList.add('active');
+            
+            // Activar el botón correspondiente
+            document.querySelector(`[data-module="${module}"]`).classList.add('active');
+        }
+        
+        // Event listeners para navegación
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const module = this.getAttribute('data-module');
+                navigateTo(module);
+            });
+        });
+    </script>
+</body>
+</html>
