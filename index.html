@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogiMarket - Sistema de Control de Inventario</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header / Navegación -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>🏢 LogiMarket S.A.</h1>
+                <p class="tagline">Sistema de Control de Mercancía</p>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn active" data-module="inicio">🏠 Inicio</button>
+                <button class="nav-btn" data-module="productos">📦 Productos</button>
+                <button class="nav-btn" data-module="entradas">📥 Entradas</button>
+                <button class="nav-btn" data-module="salidas">📤 Salidas</button>
+                <button class="nav-btn" data-module="ajustes">⚙️ Ajustes</button>
+                <button class="nav-btn" data-module="reportes">📊 Reportes</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Módulo de Inicio (Vista por defecto) -->
+            <section id="inicio" class="module active">
+                <div class="welcome-section">
+                    <h2>Bienvenido al Sistema de Gestión de Inventario</h2>
+                    <p>Distribuciones LogiMarket S.A. - Control eficiente de mercancías</p>
+                    
+                    <div class="dashboard-cards">
+                        <div class="card">
+                            <div class="card-icon">📦</div>
+                            <h3>Productos</h3>
+                            <p>Gestión completa del catálogo de productos</p>
+                            <button class="btn-primary" onclick="navigateTo('productos')">Acceder</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">📥</div>
+                            <h3>Entradas</h3>
+                            <p>Registro de compras y recepciones</p>
+                            <button class="btn-primary" onclick="navigateTo('entradas')">Acceder</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">📤</div>
+                            <h3>Salidas</h3>
+                            <p>Control de despachos y ventas</p>
+                            <button class="btn-primary" onclick="navigateTo('salidas')">Acceder</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">⚙️</div>
+                            <h3>Ajustes</h3>
+                            <p>Correcciones de inventario</p>
+                            <button class="btn-primary" onclick="navigateTo('ajustes')">Acceder</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">📊</div>
+                            <h3>Reportes</h3>
+                            <p>Análisis y estadísticas</p>
+                            <button class="btn-primary" onclick="navigateTo('reportes')">Acceder</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo de Productos -->
+            <section id="productos" class="module">
+                <h2>Gestión de Productos</h2>
+                <div class="module-content">
+                    <p>Módulo en desarrollo por Integrante 1...</p>
+                </div>
+            </section>
+
+            <!-- Módulo de Entradas -->
+            <section id="entradas" class="module">
+                <h2>Entradas de Mercancía</h2>
+                <div class="module-content">
+                    <p>Módulo en desarrollo por Integrante 2...</p>
+                </div>
+            </section>
+
+            <!-- Módulo de Salidas -->
+            <section id="salidas" class="module">
+                <h2>Salidas / Despachos</h2>
+                <div class="module-content">
+                    <p>Módulo en desarrollo por Integrante 3...</p>
+                </div>
+            </section>
+
+            <!-- Módulo de Ajustes -->
+<!-- Módulo de Ajustes -->
+<section id="ajustes" class="module">
+    <h2>⚙️ Ajustes de Inventario</h2>
+    
+    <!-- Mensajes de alerta -->
+    <div id="alert-ajustes" style="display: none;"></div>
+    
+    <!-- Formulario de Ajuste -->
+    <div class="card">
+        <h3>Registrar Ajuste de Inventario</h3>
+        <form id="form-ajuste">
+            <div class="d-flex gap-2" style="flex-wrap: wrap;">
+                <div class="form-group" style="flex: 1; min-width: 200px;">
+                    <label for="ajuste-producto">Producto *</label>
+                    <select id="ajuste-producto" class="form-control" required>
+                        <option value="">Seleccione un producto...</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" style="flex: 1; min-width: 200px;">
+                    <label for="ajuste-tipo">Tipo de Ajuste *</label>
+                    <select id="ajuste-tipo" class="form-control" required>
+                        <option value="">Seleccione tipo...</option>
+                        <option value="POSITIVO">➕ Ajuste Positivo (Aumentar)</option>
+                        <option value="NEGATIVO">➖ Ajuste Negativo (Disminuir)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="d-flex gap-2" style="flex-wrap: wrap;">
+                <div class="form-group" style="flex: 1; min-width: 200px;">
+                    <label for="ajuste-cantidad">Cantidad *</label>
+                    <input type="number" id="ajuste-cantidad" class="form-control" 
+                           min="1" step="1" required placeholder="Ej: 10">
+                </div>
+                
+                <div class="form-group" style="flex: 1; min-width: 200px;">
+                    <label for="ajuste-fecha">Fecha *</label>
+                    <input type="date" id="ajuste-fecha" class="form-control" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="ajuste-razon">Razón del Ajuste *</label>
+                <input type="text" id="ajuste-razon" class="form-control" required
+                       placeholder="Ej: Conteo físico anual, Producto dañado, Error de registro">
+            </div>
+            
+            <div class="form-group">
+                <label for="ajuste-comentarios">Comentarios Adicionales *</label>
+                <textarea id="ajuste-comentarios" class="form-control" required
+                          placeholder="Describa detalladamente el motivo del ajuste..."></textarea>
+            </div>
+            
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn-primary">💾 Registrar Ajuste</button>
+                <button type="button" class="btn-secondary" onclick="limpiarFormularioAjuste()">🔄 Limpiar</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Información de Stock Actual -->
+    <div id="info-stock-ajuste" class="alert alert-info" style="display: none; margin-top: 1rem;">
+        <strong>Stock Actual:</strong> <span id="stock-actual-display">-</span> unidades
+    </div>
+    
+    <!-- Tabla de Ajustes -->
+    <div class="table-container">
+        <div style="padding: 1rem; background-color: var(--primary-color); color: white; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin: 0;">📋 Historial de Ajustes</h3>
+            <button class="btn-secondary btn-sm" onclick="cargarAjustes()">🔄 Actualizar</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Producto</th>
+                    <th>Tipo</th>
+                    <th>Cantidad</th>
+                    <th>Stock Anterior</th>
+                    <th>Stock Nuevo</th>
+                    <th>Razón</th>
+                    <th>Comentarios</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-ajustes">
+                <tr>
+                    <td colspan="9" class="text-center">Cargando ajustes...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- Módulo de Reportes -->
+<section id="reportes" class="module">
+    <h2>Reportes y Análisis</h2>
+    
+    <!-- Mensajes de alerta -->
+    <div id="alert-reportes" style="display: none;"></div>
+    
+    <!-- Pestañas de reportes -->
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="inventario">📦 Inventario Actual</button>
+        <button class="tab-btn" data-tab="movimientos">📋 Movimientos</button>
+        <button class="tab-btn" data-tab="productos">🔍 Por Producto</button>
+        <button class="tab-btn" data-tab="clientes">👥 Por Cliente</button>
+    </div>
+    
+    <!-- Tab: Inventario Actual -->
+    <div id="tab-inventario" class="tab-content active">
+        <div class="card">
+            <div class="d-flex justify-between align-center" style="margin-bottom: 1rem;">
+                <h3>Stock Actual de Productos</h3>
+                <div class="d-flex gap-2">
+                    <button class="btn-primary btn-sm" onclick="cargarInventarioActual()">Actualizar</button>
+                    <button class="btn-success btn-sm" onclick="exportarInventarioCSV()">Exportar CSV</button>
+                </div>
+            </div>
+            
+            <!-- Resumen -->
+            <div class="dashboard-cards" style="margin-bottom: 1.5rem;">
+                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    <h4 style="color: white;">Total Productos</h4>
+                    <p style="font-size: 2rem; font-weight: bold; color: white;" id="total-productos">0</p>
+                </div>
+                <div class="card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
+                    <h4 style="color: white;">Valor Total Inventario</h4>
+                    <p style="font-size: 2rem; font-weight: bold; color: white;" id="valor-inventario">$0.00</p>
+                </div>
+                <div class="card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white;">
+                    <h4 style="color: white;">Productos con Stock Bajo</h4>
+                    <p style="font-size: 2rem; font-weight: bold; color: white;" id="stock-bajo">0</p>
+                </div>
+            </div>
+            
+            <!-- Tabla de inventario -->
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Descripción</th>
+                            <th>Marca</th>
+                            <th>Unidad</th>
+                            <th>Stock Actual</th>
+                            <th>Costo Unit.</th>
+                            <th>Valor Total</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-inventario">
+                        <tr>
+                            <td colspan="8" class="text-center">Cargando inventario...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tab: Movimientos -->
+    <div id="tab-movimientos" class="tab-content">
+        <div class="card">
+            <h3>Historial de Movimientos</h3>
+            
+            <!-- Filtros -->
+            <div class="d-flex gap-2" style="margin-bottom: 1.5rem; flex-wrap: wrap;">
+                <div class="form-group" style="flex: 1; min-width: 150px;">
+                    <label>Tipo de Movimiento</label>
+                    <select id="filtro-tipo-movimiento" class="form-control">
+                        <option value="">Todos</option>
+                        <option value="ENTRADA">Entradas</option>
+                        <option value="SALIDA">Salidas</option>
+                        <option value="AJUSTE">Ajustes</option>
+                    </select>
+                </div>
+                <div class="form-group" style="flex: 1; min-width: 150px;">
+                    <label>Fecha Desde</label>
+                    <input type="date" id="filtro-fecha-desde" class="form-control">
+                </div>
+                <div class="form-group" style="flex: 1; min-width: 150px;">
+                    <label>Fecha Hasta</label>
+                    <input type="date" id="filtro-fecha-hasta" class="form-control">
+                </div>
+                <div class="form-group" style="display: flex; align-items: flex-end;">
+                    <button class="btn-primary" onclick="filtrarMovimientos()">Filtrar</button>
+                </div>
+                <div class="form-group" style="display: flex; align-items: flex-end;">
+                    <button class="btn-success" onclick="exportarMovimientosCSV()">Exportar</button>
+                </div>
+            </div>
+            
+            <!-- Tabla de movimientos -->
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Tipo</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Tercero</th>
+                            <th>Comentarios</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-movimientos">
+                        <tr>
+                            <td colspan="6" class="text-center">Cargando movimientos...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tab: Por Producto -->
+    <div id="tab-productos" class="tab-content">
+        <div class="card">
+            <h3>Reporte por Producto</h3>
+            
+            <!-- Filtros -->
+            <div class="d-flex gap-2" style="margin-bottom: 1.5rem; flex-wrap: wrap;">
+                <div class="form-group" style="flex: 2; min-width: 200px;">
+                    <label>Producto</label>
+                    <select id="reporte-producto" class="form-control">
+                        <option value="">Seleccione un producto...</option>
+                    </select>
+                </div>
+                <div class="form-group" style="flex: 1; min-width: 150px;">
+                    <label>Fecha Desde</label>
+                    <input type="date" id="reporte-producto-desde" class="form-control">
+                </div>
+                <div class="form-group" style="flex: 1; min-width: 150px;">
+                    <label>Fecha Hasta</label>
+                    <input type="date" id="reporte-producto-hasta" class="form-control">
+                </div>
+                <div class="form-group" style="display: flex; align-items: flex-end;">
+                    <button class="btn-primary" onclick="generarReporteProducto()">Generar</button>
+                </div>
+            </div>
+            
+            <!-- Resultado del reporte -->
+            <div id="resultado-reporte-producto"></div>
+        </div>
+    </div>
+    
+    <!-- Tab: Por Cliente -->
+    <div id="tab-clientes" class="tab-content">
+        <div class="card">
+            <h3>Reporte por Cliente</h3>
+            
+            <!-- Filtros -->
+            <div class="d-flex gap-2" style="margin-bottom: 1.5rem; flex-wrap: wrap;">
+                <div class="form-group" style="flex: 2; min-width: 200px;">
+                    <label>Cliente</label>
+                    <select id="reporte-cliente" class="form-control">
+                        <option value="">Seleccione un cliente...</option>
+                    </select>
+                </div>
+                <div class="form-group" style="flex: 1; min-width: 150px;">
+                    <label>Fecha Desde</label>
+                    <input type="date" id="reporte-cliente-desde" class="form-control">
+                </div>
+                <div class="form-group" style="flex: 1; min-width: 150px;">
+                    <label>Fecha Hasta</label>
+                    <input type="date" id="reporte-cliente-hasta" class="form-control">
+                </div>
+                <div class="form-group" style="display: flex; align-items: flex-end;">
+                    <button class="btn-primary" onclick="generarReporteCliente()">Generar</button>
+                </div>
+            </div>
+            
+            <!-- Resultado del reporte -->
+            <div id="resultado-reporte-cliente"></div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Estilos para las pestañas */
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 0.75rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-light);
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+    color: var(--primary-color);
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+</style>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 LogiMarket S.A. - Sistema de Control de Inventario</p>
+            <p>Universidad Tecnológica de Panamá | Desarrollo de Software V</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/db.js"></script>
+    <script>
+        // Función para navegar entre módulos
+        function navigateTo(module) {
+            // Ocultar todos los módulos
+            document.querySelectorAll('.module').forEach(mod => {
+                mod.classList.remove('active');
+            });
+            
+            // Remover clase active de todos los botones
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Mostrar el módulo seleccionado
+            document.getElementById(module).classList.add('active');
+            
+            // Activar el botón correspondiente
+            document.querySelector(`[data-module="${module}"]`).classList.add('active');
+        }
+        
+        // Event listeners para navegación
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const module = this.getAttribute('data-module');
+                navigateTo(module);
+            });
+        });
+    </script>
+    <script src="js/ajustes.js"></script>
+    <script src="js/reportes.js"></script>
+</body>
+</html>
